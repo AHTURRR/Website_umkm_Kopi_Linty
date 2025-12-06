@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu & Produk - Kopi Linty</title>
+    
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/produk.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <header>
+      <nav class="navbar-section-content">
+        <a class="navbar-brand" href="index.html">
+            <img src="img/pngtree-coffee-cup-logo-png-image_6582529-removebg-preview.png" alt="Logo" width="40" height="40">
+            Kopi Linty
+        </a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+           <span class="bar"></span>
+           <span class="bar"></span>
+           <span class="bar"></span>
+        </div>
+
+       <ul class="nav-menu">
+          <button id="meu-close-button">&times;</button>
+          <li class="nav-item"><a href="index.html" class="nav-link active">Beranda</a></li>
+          <li class="nav-item"><a href="tentang.html" class="nav-link active">Tentang Kami</a></li> 
+          <li class="nav-item"><a href="produk.html" class="nav-link active">Produk</a></li>
+          <li class="nav-item"><a href="galeri.html" class="nav-link active">Galeri</a></li>
+          <li class="nav-item"><a href="kontak.html" class="nav-link active">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      
+      <section class="page-title container mt-5 ">
+        <h2>Menu Kopi Linty</h2>
+        <p>Pilihan terbaik untuk menemani harimu.</p>
+      </section>
+
+      <section class="featured-section">
+        <div class="featured-card">
+            <div class="featured-image">
+                <img src="img/Gemini_Generated_Image_meege8meege8meeg.png" alt="Kopi Linty Signature">
+                <span class="badge">Best Seller</span>
+            </div>
+            
+            <div class="featured-info">
+                <h3>Signature: Kopi Linty</h3>
+                <p class="desc">Perpaduan biji kopi pilihan dengan teknik seduh rahasia. Kenikmatan yang tiada tara untuk pecinta kopi sejati.</p>
+                
+                <div class="rating-box">
+                    <span>Rating Pelanggan:</span>
+                    <div id="hasil-rating" class="stars"></div>
+                </div>
+
+                <a href="kontak.html" class="btn-order">Pesan Sekarang</a>
+            </div>
+        </div>
+      </section>
+
+      <script>
+        // Data simulasi (bisa diambil dari database nanti)
+        let rating = 4.8; 
+        const elemenHasil = document.getElementById("hasil-rating");
+
+        if (rating >= 4.5) {
+            // Kita gunakan HTML entity untuk bintang agar berwarna
+            elemenHasil.innerHTML = "★★★★★ <span class='rating-text'>(Sangat Disarankan)</span>";
+            elemenHasil.style.color = "#ffc107"; // Warna Emas
+        } else if (rating >= 3) {
+            elemenHasil.innerHTML = "★★★☆☆ <span class='rating-text'>(Rekomendasi Biasa)</span>";
+            elemenHasil.style.color = "#ffa500"; 
+        } else {
+            elemenHasil.innerHTML = "★☆☆☆☆ <span class='rating-text'>(Tidak Direkomendasikan)</span>";
+            elemenHasil.style.color = "red";
+        }
+      </script>
+
+      <section class="menu-list-section">
+        <div class="section-header">
+            <h3>Daftar Harga Lengkap</h3>
+            <p>Berikut adalah daftar produk kopi linty yang tersedia:</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="custom-table">
+                <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Ukuran</th>
+                    <th>Harga</th>
+                    <th>Jenis Biji</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Kopi Ice Black</strong></td>
+                    <td>250g</td>
+                    <td class="price">Rp 45.000</td>
+                    <td rowspan="2" class="merged-cell">Arabika</td>
+                </tr>
+                <tr>
+                    <td><strong>Kopi Cappucino</strong></td>
+                    <td>250g</td>
+                    <td class="price">Rp 28.000</td>
+                </tr>
+                <tr>
+                    <td><strong>Kopi Americano</strong></td>
+                    <td>250g</td>
+                    <td class="price">Rp 46.000</td>
+                    <td rowspan="3" class="merged-cell">Robusta</td>
+                </tr>
+                <tr>
+                    <td><strong>Kopi Arabika Ice</strong></td>
+                    <td>250gr</td>
+                    <td class="price">Rp 38.000</td>
+                </tr>
+                <tr>
+                    <td><strong>Kopi Latte</strong></td>
+                    <td>225g</td>
+                    <td class="price">Rp 35.000</td>
+                </tr>
+                <tr>
+                    <td><strong>Kopi Khas Madura</strong></td>
+                    <td>250g</td>
+                    <td class="price">Rp 42.000</td>
+                    <td>Liberika</td>
+                </tr>
+                <tr class="table-footer">
+                    <td colspan="4">
+                    * Semua harga sudah termasuk PPN & Service Charge
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+      </section>
+
+      <h3 class="text-center mb-4 mt-5">Katalog Produk</h3>
+        <div class="row g-4 container mx-auto mb-5 mt-5">
+            
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/america.jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Americano</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 46.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/capucino.jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Capucino</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 28.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/iceblack..jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Ice Black</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 45.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/latte.jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Latte</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 35.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/khasmadura.jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Khas Madura</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 42.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/arabikaice.jpg" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Kopi Arabika">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kopi Arabika Ice</h5>
+                        <p class="card-text text-truncate">Kopi dengan aroma kuat dan rasa asam yang khas dari dataran tinggi Gayo.</p>
+                        <div class="mt-auto">
+                            <h5 class="text-primary fw-bold">Rp 38.000</h5>
+                            <button class="btn btn-outline-primary w-100 btn-beli mb-2">Beli Sekarang</button>
+                            <button class="btn btn-sm btn-link w-100" data-bs-toggle="modal" data-bs-target="#detailModal">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+    </main>
+
+    <footer>
+      
+      <div class="footer-bottom">
+      <p class="struk-footer">&copy; 2025 Kopi Linty. Life, Inspiration, Serenity.</p>
+      </div>
+      <div class="sosial-media">
+        <h3>Ikuti Perjalanan Kami</h3>
+        <p>Dapatkan info promo dan menu terbaru di sosial media kami: </p>
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/da0be4b7e25b3b666983de0f8800a62d-removebg-preview.png" alt="logo ig" class="ig-logo">
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/9473477dfc8cb2859b32af6043236dca-removebg-preview.png" alt="logo ig" class="yt-logo">
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/257435115253d7c7fd42ac50af0a4ad7__1_-removebg-preview.png" alt="logo ig" class="tt-logo">
+            
+        </a>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        
+        // --- LOGIK RATING BAWAAN (Disesuaikan dikit) ---
+        let rating = 4.8;
+        const elemenHasil = $("#hasil-rating"); // Pakai selector jQuery
+        if (rating >= 4.5) {
+          elemenHasil.html("★★★★★ <span style='font-size:0.8rem'>(Sangat Disarankan)</span>");
+        } else {
+          elemenHasil.html("★★★☆☆");
+        }
+
+        // --- 3 EVENT JQUERY SESUAI PERMINTAAN ---
+
+        // EVENT 1: Click Event (Tombol Beli)
+        // Ketika tombol dengan class 'btn-beli' diklik
+        $(".btn-beli").click(function(e){
+            e.preventDefault(); // Mencegah reload link
+            // Munculkan alert
+            $("#success-alert").removeClass("d-none").addClass("show");
+            // Scroll halus ke atas agar alert terlihat
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            
+            // Auto hide alert setelah 3 detik
+            setTimeout(function() {
+                $("#success-alert").addClass("d-none");
+            }, 3000);
+        });
+
+        // EVENT 2: Mouseenter & Mouseleave (Hover Card)
+        // Efek card terangkat saat mouse masuk
+        $(".product-card").hover(
+            function() {
+                // Mouse Masuk
+                $(this).addClass("shadow-lg border-primary"); // Tambah bayangan tebal & border biru
+                $(this).css("transform", "translateY(-10px)"); // Naik ke atas sedikit
+                $(this).css("transition", "0.3s"); // Animasi halus
+            }, function() {
+                // Mouse Keluar
+                $(this).removeClass("shadow-lg border-primary");
+                $(this).css("transform", "translateY(0)"); // Kembali ke posisi asal
+            }
+        );
+
+        // EVENT 3: Hover pada Gambar Utama (Zoom Effect)
+        $(".hover-zoom").hover(
+            function(){
+                $(this).css("transform", "scale(1.1)");
+                $(this).css("transition", "transform 0.5s ease");
+            },
+            function(){
+                $(this).css("transform", "scale(1.0)");
+            }
+        );
+
+    });
+    </script>
+  </body>
+</html>

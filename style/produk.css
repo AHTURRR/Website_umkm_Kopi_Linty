@@ -1,0 +1,225 @@
+/* produk.css - Styles Modern untuk Halaman Produk */
+
+/* Judul Halaman */
+.page-title {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.page-title h2 {
+    font-family: 'Lora', serif;
+    color: var(--primary-green); /* Mengambil dari style.css */
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+/* --- SECTION 1: FEATURED CARD (Produk Unggulan) --- */
+.featured-section {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.featured-card {
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Shadow lembut */
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+/* Sisi Gambar */
+.featured-image {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    min-height: 350px;
+    background-color: var(--bg-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.featured-image img {
+    width: 80%;
+    max-width: 300px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    transition: transform 0.3s;
+}
+
+.featured-image img:hover {
+    transform: scale(1.05) rotate(2deg); /* Efek goyang dikit */
+}
+
+/* Badge Best Seller */
+.badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Sisi Teks Informasi */
+.featured-info {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+}
+
+.featured-info h3 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+}
+
+.featured-info .desc {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Rating Box */
+.rating-box {
+    background-color: var(--bg-cream);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.stars {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+/* Tombol Pesan */
+.btn-order {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.btn-order:hover {
+    background-color: #14460c;
+    box-shadow: 0 5px 15px rgba(20, 70, 12, 0.3);
+}
+
+/* --- SECTION 2: TABEL MENU --- */
+.menu-list-section {
+    padding: 20px 5% 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Wrapper Responsive untuk Tabel */
+.table-responsive {
+    overflow-x: auto; /* Kunci agar bisa discroll horizontal di HP */
+    border-radius: 15px; /* Membungkus tabel agar sudutnya bulat */
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+/* Styling Tabel Utama */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 600px; /* Minimal lebar agar tidak gepeng di HP */
+}
+
+.custom-table th {
+    background-color: var(--primary-green);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    padding: 18px;
+    letter-spacing: 1px;
+}
+
+.custom-table td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Highlight kolom harga */
+.custom-table .price {
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+/* Sel yang digabung (rowspan) */
+.merged-cell {
+    vertical-align: middle; /* Teks di tengah secara vertikal */
+    background-color: #fafafa;
+    font-weight: bold;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Efek Hover Baris */
+.custom-table tbody tr:hover {
+    background-color: #f9f7f2; /* Warna krem tipis saat disorot */
+}
+
+/* Footer Tabel */
+.table-footer td {
+    background-color: #f1f1f1;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+    border-bottom: none;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .featured-card {
+        flex-direction: column; /* Gambar di atas, teks di bawah */
+    }
+    
+    .featured-image {
+        width: 100%;
+        padding: 40px 0;
+    }
+    
+    .featured-info {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .rating-box {
+        text-align: center;
+    }
+    
+    /* Tabel akan muncul scrollbar horizontal secara otomatis karena class .table-responsive */
+}

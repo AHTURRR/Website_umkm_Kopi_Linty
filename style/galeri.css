@@ -1,0 +1,127 @@
+/* galeri.css - Styles Modern untuk Halaman Galeri */
+
+.div-galeri { /* Mengambil var dari style.css */
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+
+/* Header Judul Halaman */
+.page-header {
+  text-align: center;
+  padding: 40px 20px 20px 20px;
+
+}
+
+.subtitle-galeri {
+  font-family: 'Lora', serif;
+  font-size: 2.8rem;
+  color: var(--primary-green);
+  margin-bottom: 10px;
+}
+
+.desc-galeri {
+  color: #666;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* Container Grid Utama */
+.galeri-container {
+  display: grid;
+  /* Grid Pintar: Otomatis mengisi kolom, minimal lebar 300px per kartu */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Style Card Galeri */
+.card-galeri {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden; /* Agar gambar tidak keluar dari sudut bulat */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: transform 0.3s ease;
+  height: 350px; /* Tinggi seragam agar rapi */
+  cursor: pointer;
+}
+
+/* Wrapper Gambar */
+.img-box {
+  width: 100%;
+  height: 100%;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Gambar akan di-crop rapi mengisi kotak */
+  transition: transform 0.5s ease;
+}
+
+/* Efek Hover pada Gambar (Zoom in) */
+.card-galeri:hover .img-box img {
+  transform: scale(1.1);
+}
+
+/* Kotak Konten (Teks) */
+.content-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(20, 70, 12, 0.9), transparent); /* Gradasi Hijau Transparan */
+  padding: 20px;
+  color: #fff;
+  
+  /* Animasi Teks */
+  transform: translateY(100px); /* Sembunyi ke bawah dulu */
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.content-box h3 {
+  font-size: 1.4rem;
+  font-family: 'Lora', serif;
+  margin-bottom: 5px;
+  color: #c5a065; /* Aksen Emas */
+}
+
+.content-box p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Saat Card di-Hover, Munculkan Teks */
+.card-galeri:hover .content-box {
+  transform: translateY(0); /* Kembali ke posisi semula */
+  opacity: 1;
+}
+
+/* --- Support untuk JS Sorot (Jika ada script lama) --- */
+.sorot {
+    border: 3px solid var(--accent-gold);
+    transform: scale(1.02);
+}
+
+/* --- Responsive Mobile --- */
+@media (max-width: 768px) {
+  .galeri-container {
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .subtitle-galeri {
+    font-size: 2rem;
+  }
+  
+  /* Di HP, teks mungkin lebih baik ditampilkan separuh agar user tahu itu apa */
+  .content-box {
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(20, 70, 12, 0.9), rgba(20, 70, 12, 0.4));
+    opacity: 1;
+    padding: 15px;
+  }
+}

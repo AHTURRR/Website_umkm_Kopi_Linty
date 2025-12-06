@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hubungi Kami - Kopi Linty</title>
+    
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/kontak.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script type="module" src="js/form.js"></script>
+    <script type="module" src="js/newsletter.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar-section-content">
+        <a class="navbar-brand" href="index.html">
+            <img src="img/pngtree-coffee-cup-logo-png-image_6582529-removebg-preview.png" alt="Logo" width="40" height="40">
+            Kopi Linty
+        </a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+           <span class="bar"></span>
+           <span class="bar"></span>
+           <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+          <button id="meu-close-button">&times;</button>
+          <li class="nav-item"><a href="index.html" class="nav-link active">Beranda</a></li>
+          <li class="nav-item"><a href="tentang.html" class="nav-link active">Tentang Kami</a></li> 
+          <li class="nav-item"><a href="produk.html" class="nav-link active">Produk</a></li>
+          <li class="nav-item"><a href="galeri.html" class="nav-link active">Galeri</a></li>
+          <li class="nav-item"><a href="kontak.html" class="nav-link active">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      
+      <section class="page-title">
+        <h2>Hubungi Kami</h2>
+        <p>Punya pertanyaan atau ingin bekerjasama? Kami siap mendengar.</p>
+      </section>
+
+      <section class="contact-section">
+        <div class="contact-container">
+            
+            <div class="contact-info">
+                <div class="info-box">
+                    <h3>📍 Lokasi Kami</h3>
+                    <p>Jl. Kopi Nusantara No. 88, Malang<br>Jawa Timur, Indonesia</p>
+                </div>
+                <div class="info-box">
+                    <h3>📞 Kontak</h3>
+                    <p>WhatsApp: +62 821-xxxx-xxxx<br>Email: hello@kopilinty.com</p>
+                </div>
+                <div class="info-box">
+                    <h3>⏰ Jam Operasional</h3>
+                    <p>Senin - Jumat: 08.00 - 22.00<br>Sabtu - Minggu: 09.00 - 23.00</p>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h3>Kirim Pesan</h3>
+                <form action="#" method="post" class="form" id="kontakForm">
+                    
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" />
+                        <span class="error-text" id="errorNama"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" />
+                        <span class="error-text" id="errorEmail"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hp">Nomor WhatsApp</label>
+                        <input type="text" id="hp" name="hp" maxlength="15" placeholder="0821xxxxxxxx" />
+                        <span class="error-text" id="errorHp"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kategori">Perihal</label>
+                        <select id="kategori" name="kategori">
+                            <option value="umum">Pertanyaan Umum</option>
+                            <option value="produk">Komplain Produk</option>
+                            <option value="kerjasama">Kerjasama Bisnis</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesan">Pesan Anda</label>
+                        <textarea name="pesan" id="pesan" rows="5" placeholder="Tuliskan pesan Anda disini..."></textarea>
+                        <span class="error-text" id="errorPesan"></span>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="langganan" name="langganan" value="ya" />
+                        <label for="langganan">Saya ingin menerima newsletter promo terbaru</label>
+                    </div>
+
+                    <div id="feedback"></div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">Kirim Pesan</button>
+                        <button type="button" id="clearBTN" class="btn-danger">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </section>
+
+      <section class="tools-section">
+        <div class="container">
+            <h2 class="tools-title">Fitur Interaktif Pelanggan</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>🔍 Cek Kategori Usia</h4>
+                    <p>Ketahui rekomendasi kopi berdasarkan usia Anda.</p>
+                    <div class="input-wrapper">
+                        <input type="number" id="usiaInput" placeholder="Umur (thn)" />
+                        <button type="button" onclick="cekKategori()" class="btn-tool">Cek</button>
+                    </div>
+                    <p id="hasilUsia" class="result-text"></p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>🧮 Estimasi Belanja</h4>
+                    <p>Hitung total harga sebelum checkout.</p>
+                    <div class="input-wrapper-column">
+                        <input type="number" id="harga" placeholder="Harga Satuan (Rp)" />
+                        <input type="number" id="jumlah" placeholder="Jumlah Item" />
+                        <button type="button" onclick="prosesBelanja(event)" class="btn-tool">Hitung Total</button>
+                    </div>
+                    <p id="totalBelanja" class="result-text"></p>
+                </div>
+
+                <div class="tool-card testimoni-container">
+                    <h4>💬 Testimoni Live</h4>
+                    <div id="daftarTestimoni" class="testimoni-list">
+                        <p class="placeholder-text">Belum ada testimoni baru.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="webinar-section">
+        <div class="webinar-container">
+            <div class="webinar-header">
+                <h3>🎓 Daftar Webinar Kopi Linty</h3>
+                <p>Tingkatkan wawasan bisnis kopi Anda bersama para ahli.</p>
+            </div>
+
+            <form action="#" method="post" class="form-webinar" id="form-webinar">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="namaWebinar">Nama Peserta</label>
+                        <input type="text" id="namaWebinar" name="namaWebinar" placeholder="Nama Anda" />
+                        <span class="error-text" id="errorNamaWebinar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailWebinar">Email Aktif</label>
+                        <input type="text" id="emailWebinar" name="emailWebinar" placeholder="Email Anda" />
+                        <span class="error-text" id="errorEmailWebinar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="noHpWebinar">No. WhatsApp</label>
+                        <input type="text" id="noHpWebinar" name="noHpWebinar" placeholder="08..." />
+                        <span class="error-text" id="errorNoHpWebinar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TopikWebinar">Pilih Topik</label>
+                        <select name="TopikWebinar" id="TopikWebinar">
+                            <option value="">-- Pilih Topik --</option>
+                            <option value="digital-marketing">Digital Marketing 101</option>
+                            <option value="product-knowledge">Deep Dive Product Knowledge</option>
+                            <option value="sales-strategy">Strategi Penjualan 2025</option>
+                        </select>
+                        <small class="error-message">Silakan pilih Topik</small>
+                    </div>
+                </div>
+
+                <div class="checkbox-group centered">
+                    <input type="checkbox" id="syarat" name="syaratWebinar" />
+                    <label for="syarat">Saya menyetujui syarat & ketentuan webinar.</label>
+                </div>
+                <small class="error-message" id="errorSyarat"></small>
+
+                <button type="submit" class="btn-webinar">Daftar Webinar Sekarang</button>
+            </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      
+      <div class="footer-bottom">
+      <p class="struk-footer">&copy; 2025 Kopi Linty. Life, Inspiration, Serenity.</p>
+      </div>
+      <div class="sosial-media">
+        <h3>Ikuti Perjalanan Kami</h3>
+        <p>Dapatkan info promo dan menu terbaru di sosial media kami: </p>
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/da0be4b7e25b3b666983de0f8800a62d-removebg-preview.png" alt="logo ig" class="ig-logo">
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/9473477dfc8cb2859b32af6043236dca-removebg-preview.png" alt="logo ig" class="yt-logo">
+        <a href="https://www.instagram.com/ahmdtrmdi?igsh=OGlweXVqcnlwZno3" class="btn-outline" target="_blank">
+            <img src="img/257435115253d7c7fd42ac50af0a4ad7__1_-removebg-preview.png" alt="logo ig" class="tt-logo">
+            
+        </a>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

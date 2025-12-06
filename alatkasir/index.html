@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Kasir Kedai Kopi (V3 - Cetak Struk)</title>
+    <style>
+        /* --- TAMPILAN LAYAR (NORMAL) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f1ea;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .menu-section {
+            flex: 2;
+            padding-right: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-section {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 { color: #4b3621; margin-top: 0;}
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            background-color: #fff8e1;
+            border-color: #d4a017;
+        }
+
+        .product-name { font-weight: bold; display: block; margin-bottom: 5px;}
+        .product-price { color: #666; font-size: 0.9em; }
+
+        #cart-items {
+            flex-grow: 1;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            border-bottom: 2px dashed #ccc;
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+        }
+
+        .payment-box {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            width: 120px;
+            text-align: right;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-bayar {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-reset {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        /* --- AREA STRUK (Tersembunyi di layar biasa) --- */
+        #area-struk {
+            display: none; /* Sembunyikan di tampilan web */
+        }
+
+        /* --- MODE CETAK (PRINT) --- */
+        @media print {
+            /* Sembunyikan semua elemen body */
+            body * {
+                visibility: hidden;
+            }
+
+            /* Tampilkan hanya area struk */
+            #area-struk, #area-struk * {
+                visibility: visible;
+                display: block;
+            }
+
+            /* Atur posisi struk di pojok kiri atas kertas */
+            #area-struk {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%; /* Lebar penuh kertas */
+                font-family: 'Courier New', Courier, monospace; /* Font ala mesin kasir */
+                font-size: 12px;
+            }
+
+            /* Hilangkan margin halaman browser jika memungkinkan */
+            @page {
+                size: auto;
+                margin: 0mm;
+            }
+        }
+        
+        /* Desain Struk */
+        .struk-header, .struk-footer { text-align: center; margin-bottom: 10px; }
+        .struk-item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .garis-putus { border-top: 1px dashed black; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="menu-section">
+        <h2>☕ Menu Kopi</h2>
+        <div class="menu-grid" id="menu-container"></div>
+    </div>
+
+    <div class="cart-section">
+        <h2>🛒 Kasir</h2>
+        <ul id="cart-items">
+            <li style="text-align:center; color:#888; margin-top:20px;">Pilih menu di kiri</li>
+        </ul>
+
+        <div class="total-section">
+            <div class="payment-box">
+                <div class="input-group">
+                    <strong>Total:</strong>
+                    <strong id="total-price">Rp 0</strong>
+                </div>
+                <div class="input-group">
+                    <label>Tunai:</label>
+                    <input type="number" id="uang-input" placeholder="0" onkeyup="hitungKembalian()">
+                </div>
+                <div class="input-group">
+                    <span>Kembalian:</span>
+                    <span id="kembalian-text" style="font-weight:bold; color:green;">Rp 0</span>
+                </div>
+            </div>
+
+            <button class="btn-bayar" onclick="prosesBayar()">🖨️ Bayar & Cetak</button>
+            <button class="btn-reset" onclick="resetKeranjang()">Hapus Pesanan</button>
+        </div>
+    </div>
+
+    <div id="area-struk">
+        <div class="struk-header">
+            <h3>KEDAI KOPI SAYA</h3>
+            <p>Jl. Mawar No. 123, Jakarta<br>Telp: 0812-3456-7890</p>
+            <p id="struk-tanggal">Tanggal: -</p>
+        </div>
+        <div class="garis-putus"></div>
+        <div id="struk-list-items">
+            </div>
+        <div class="garis-putus"></div>
+        <div class="struk-item">
+            <strong>TOTAL</strong>
+            <strong id="struk-total">Rp 0</strong>
+        </div>
+        <div class="struk-item">
+            <span>Tunai</span>
+            <span id="struk-tunai">Rp 0</span>
+        </div>
+        <div class="struk-item">
+            <span>Kembali</span>
+            <span id="struk-kembali">Rp 0</span>
+        </div>
+        <div class="struk-footer" style="margin-top: 20px;">
+            <p>Terima Kasih atas Kunjungan Anda!</p>
+            <p>Password Wifi: kopienak123</p>
+        </div>
+    </div>
+
+    <script>
+        const daftarMenu = [
+            { id: 1, nama: 'Kopi Hitam', harga: 15000 },
+            { id: 2, nama: 'Espresso', harga: 18000 },
+            { id: 3, nama: 'Cappuccino', harga: 22000 },
+            { id: 4, nama: 'Caffè Latte', harga: 24000 },
+            { id: 5, nama: 'Mocha', harga: 26000 },
+            { id: 6, nama: 'Es Kopi Susu', harga: 20000 },
+            { id: 7, nama: 'Vietnam Drip', harga: 18000 },
+            { id: 8, nama: 'Roti Bakar', harga: 12000 },
+            { id: 9, nama: 'Kentang Goreng', harga: 15000 },
+            { id: 10, nama: 'Air Mineral', harga: 5000 }
+        ];
+
+        let keranjang = [];
+        let totalBelanja = 0;
+
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        }
+
+        function tampilkanMenu() {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+            daftarMenu.forEach(menu => {
+                const div = document.createElement('div');
+                div.classList.add('product-card');
+                div.onclick = () => tambahKeKeranjang(menu);
+                div.innerHTML = `
+                    <span class="product-name">${menu.nama}</span>
+                    <span class="product-price">${formatRupiah(menu.harga)}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function tambahKeKeranjang(menuDipilih) {
+            keranjang.push(menuDipilih);
+            updateTampilanKeranjang();
+            hitungKembalian();
+        }
+
+        function updateTampilanKeranjang() {
+            const listKeranjang = document.getElementById('cart-items');
+            const totalTeks = document.getElementById('total-price');
+            
+            listKeranjang.innerHTML = '';
+            totalBelanja = 0;
+
+            if (keranjang.length === 0) {
+                listKeranjang.innerHTML = '<li style="text-align:center; color:#888; margin-top:20px;">Pilih menu di kiri</li>';
+            } else {
+                keranjang.forEach((item) => {
+                    totalBelanja += item.harga;
+                    const li = document.createElement('li');
+                    li.classList.add('cart-item');
+                    li.innerHTML = `<span>${item.nama}</span> <span>${formatRupiah(item.harga)}</span>`;
+                    listKeranjang.appendChild(li);
+                });
+            }
+            totalTeks.innerText = formatRupiah(totalBelanja);
+        }
+
+        function hitungKembalian() {
+            const uangMasuk = document.getElementById('uang-input').value;
+            const teksKembalian = document.getElementById('kembalian-text');
+            const kembalian = uangMasuk - totalBelanja;
+
+            if (uangMasuk === "" || uangMasuk == 0) {
+                teksKembalian.innerText = "Rp 0";
+                teksKembalian.style.color = "green";
+            } else if (kembalian < 0) {
+                teksKembalian.innerText = "Kurang " + formatRupiah(Math.abs(kembalian));
+                teksKembalian.style.color = "red";
+            } else {
+                teksKembalian.innerText = formatRupiah(kembalian);
+                teksKembalian.style.color = "green";
+            }
+        }
+
+        function prosesBayar() {
+            const uangMasuk = document.getElementById('uang-input').value;
+
+            if (keranjang.length === 0) {
+                alert("Keranjang kosong!");
+                return;
+            }
+
+            if (uangMasuk < totalBelanja) {
+                alert("Uang kurang!");
+                return;
+            }
+
+            // 1. Isi data ke area struk (tersembunyi)
+            siapkanStruk(uangMasuk);
+
+            // 2. Panggil perintah print bawaan browser
+            window.print();
+
+            // 3. Opsional: Reset setelah print
+            const konfirmasi = confirm("Apakah ingin mengosongkan keranjang untuk pelanggan berikutnya?");
+            if(konfirmasi) resetKeranjang();
+        }
+
+        function siapkanStruk(uangMasuk) {
+            const strukList = document.getElementById('struk-list-items');
+            const strukTotal = document.getElementById('struk-total');
+            const strukTunai = document.getElementById('struk-tunai');
+            const strukKembali = document.getElementById('struk-kembali');
+            const strukTanggal = document.getElementById('struk-tanggal');
+
+            // Set Tanggal Hari ini
+            const now = new Date();
+            strukTanggal.innerText = now.toLocaleString('id-ID');
+
+            // Masukkan item belanja
+            strukList.innerHTML = '';
+            keranjang.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('struk-item');
+                div.innerHTML = `<span>${item.nama}</span> <span>${formatRupiah(item.harga)}</span>`;
+                strukList.appendChild(div);
+            });
+
+            // Masukkan angka-angka
+            strukTotal.innerText = formatRupiah(totalBelanja);
+            strukTunai.innerText = formatRupiah(uangMasuk);
+            strukKembali.innerText = formatRupiah(uangMasuk - totalBelanja);
+        }
+
+        function resetKeranjang() {
+            keranjang = [];
+            document.getElementById('uang-input').value = '';
+            document.getElementById('kembalian-text').innerText = 'Rp 0';
+            updateTampilanKeranjang();
+        }
+
+        tampilkanMenu();
+    </script>
+</body>
+</html>

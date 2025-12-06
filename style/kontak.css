@@ -1,0 +1,315 @@
+/* kontak.css - Modern Styles untuk Form & Tools */
+
+/* Judul Halaman */
+.page-title {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.page-title h2 {
+    font-family: 'Lora', serif;
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* --- SECTION 1: MAIN CONTACT (Split Layout) --- */
+.contact-section {
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start; /* Sejajar atas */
+}
+
+/* Kolom Kiri: Info */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-box {
+    background: var(--primary-green);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    color: var(--accent-gold);
+    font-family: 'Lora', serif;
+}
+
+.info-box p {
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Kolom Kanan: Form Utama */
+.contact-form-wrapper {
+    flex: 2; /* Form lebih lebar dari info */
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--primary-green);
+}
+
+.contact-form-wrapper h3 {
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+/* Form Elements Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-coffee);
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fcfcfc;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-green);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(31, 78, 53, 0.1); /* Glow hijau */
+}
+
+/* Button Styling */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    flex: 2;
+}
+
+.btn-primary:hover {
+    background-color: #14460c;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #d9534f;
+    border: 1px solid #d9534f;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.btn-danger:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+/* Feedback Styling */
+.error-text, .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+#feedback {
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.feedback-success {
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.feedback-error {
+    padding: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+/* --- SECTION 2: TOOLS (Widgets) --- */
+.tools-section {
+    background-color: var(--bg-cream);
+    padding: 60px 5%;
+    margin-top: 60px;
+}
+
+.tools-title {
+    text-align: center;
+    color: var(--primary-green);
+    font-family: 'Lora', serif;
+    margin-bottom: 40px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tool-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.tool-card h4 {
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.input-wrapper, .input-wrapper-column {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.input-wrapper-column {
+    flex-direction: column;
+}
+
+.btn-tool {
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-tool:hover {
+    background-color: #b08d55;
+}
+
+.result-text {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--primary-green);
+    font-size: 1.1rem;
+    min-height: 20px;
+}
+
+/* --- SECTION 3: WEBINAR --- */
+.webinar-section {
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.webinar-container {
+    background: linear-gradient(135deg, #3b2f2f 0%, #2c2222 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.webinar-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.webinar-header h3 {
+    color: var(--accent-gold);
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.webinar-container label {
+    color: #ddd;
+}
+
+.btn-webinar {
+    width: 100%;
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.btn-webinar:hover {
+    background-color: #fff;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info {
+        width: 100%;
+    }
+    
+    .contact-form-wrapper {
+        padding: 25px;
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Form webinar jadi 1 kolom di HP */
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}

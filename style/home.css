@@ -1,0 +1,254 @@
+/* home.css - Modern & Aesthetic Style */
+body{
+  margin-top: -50px;
+}
+
+/* --- 1. HERO SECTION --- */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Latar belakang gradasi hijau ke gelap yang elegan */
+  background: linear-gradient(135deg, #1f4e35 0%, #0f281b 100%);
+  position: relative;
+  padding-top: 80px; /* Kompensasi navbar fixed */
+  border-bottom-right-radius: 50px; /* Sentuhan estetika di sudut */
+}
+
+.section-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+/* Teks Hero */
+.hero-detail {
+  flex: 1;
+  color: var(--white);
+  z-index: 2;
+}
+
+.subtitle {
+  font-family: 'Lora', serif;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.description {
+  color: #d1e2d5; /* Hijau pucat agar mudah dibaca */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 90%;
+}
+
+/* Tombol CTA (Call to Action) */
+.btn-cta {
+  display: inline-block;
+  background-color: var(--accent-gold);
+  color: var(--primary-green);
+  padding: 15px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(197, 160, 101, 0.4);
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(197, 160, 101, 0.6);
+}
+
+/* Gambar Hero */
+.hero-image-wraper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 450px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+  
+}
+
+.efek-kopi {
+  position: absolute;
+  bottom: 60px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- 2. KEUNGGULAN (White Section) --- */
+.white-section {
+  background-color: var(--white);
+  padding: 100px 5%;
+}
+
+.split-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.image-side img {
+  width: 400px;
+  height: 400px;
+   /* Membuat gambar bulat */
+  object-fit: cover;
+  border: 10px solid var(--bg-cream);
+  box-shadow: var(--shadow-hover);
+}
+
+.text-side h2 {
+  font-family: 'Lora', serif;
+  color: var(--primary-green);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-gold);
+  margin-bottom: 25px;
+}
+
+.fitur-list {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.fitur-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.icon-check {
+  background-color: var(--primary-green);
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-top: 3px;
+}
+
+/* --- 3. TESTIMONI --- */
+.testimoni {
+  background-color: var(--bg-cream);
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.testimoni h2 {
+    color: var(--primary-green);
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.testimoni-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimoni .card {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-soft);
+  max-width: 400px;
+  text-align: left;
+  border-top: 5px solid var(--accent-gold);
+  transition: transform 0.3s;
+}
+
+.testimoni .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimoni p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.user-info strong {
+    display: block;
+    color: var(--primary-green);
+}
+
+
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
+  
+  .section-content {
+    flex-direction: column-reverse; /* Gambar di atas saat di HP */
+    gap: 30px;
+  }
+
+  .subtitle { font-size: 2.5rem; }
+  
+  .split-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .fitur-list li {
+    text-align: left; /* List tetap rata kiri agar rapi */
+  }
+
+  .image-side img {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .divider { margin: 0 auto 25px auto; }
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}

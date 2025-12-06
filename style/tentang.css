@@ -1,0 +1,227 @@
+/* tentang.css - Styles Modern untuk Halaman Tentang Kami */
+
+/* Container Umum untuk membatasi lebar */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- SECTION 1: STORY (Split Layout) --- */
+.story-section {
+    padding: 60px 0;
+    background-color: var(--white); /* Mengambil dari style.css */
+}
+
+.split-story {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+/* Bagian Teks Cerita */
+.story-text {
+    flex: 1;
+}
+
+.story-text h2 {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    margin-bottom: 25px;
+}
+
+.story-text p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+/* Bagian Gambar Cerita */
+.story-image {
+    flex: 1;
+    position: relative;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0px var(--bg-cream); /* Efek bingkai unik */
+    object-fit: cover;
+}
+
+/* --- SECTION 2: FILOSOFI (Grid Cards) --- */
+.values-section {
+    background-color: var(--bg-cream);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Lora', serif;
+    color: var(--primary-green);
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    color: #777;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsif otomatis */
+    gap: 30px;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.value-card:hover {
+    transform: translateY(-10px); /* Naik saat dihover */
+}
+
+.value-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    font-family: 'Lora', serif;
+}
+
+.value-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- SECTION 3: DETAILS (Lists) --- */
+.details-section {
+    padding: 80px 0;
+}
+
+.split-details {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; /* Agar turun ke bawah di HP */
+}
+
+.detail-box {
+    flex: 1;
+    background: white;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 15px;
+    min-width: 300px;
+}
+
+.detail-box h3 {
+    color: var(--primary-green);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-gold);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* List Styling: Produk Unggulan */
+.styled-list {
+    list-style: none;
+    padding: 0;
+}
+
+.styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    color: #444;
+}
+
+.styled-list li:last-child {
+    border-bottom: none;
+}
+
+/* List Styling: Timeline Produksi */
+.timeline-list {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.step {
+    background-color: var(--primary-green);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0; /* Agar bulatan tidak gepeng */
+}
+
+/* --- CTA Instagram --- */
+.cta-instagram {
+    text-align: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.btn-insta {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn-insta:hover {
+    opacity: 0.9;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .split-story {
+        flex-direction: column-reverse; /* Gambar di atas teks di HP */
+        text-align: center;
+    }
+
+    .divider {
+        margin: 0 auto 25px auto;
+    }
+
+    .story-image img {
+        box-shadow: 10px 10px 0px var(--bg-cream); /* Shadow lebih kecil di HP */
+    }
+
+    .split-details {
+        flex-direction: column;
+    }
+}
